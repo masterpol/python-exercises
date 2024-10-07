@@ -55,6 +55,6 @@ def main():
         subDomains = k.split('.')
         result = getSubDomainsRecursively(subDomains[1:len(subDomains)], obj, obj)
 
-    print(result)
+    print([[v,k] for k,v in result.items()])
 
 main()
