@@ -7,6 +7,7 @@
 """
 
 import re
+from typing import List
 song = """
 We're no strangers to love
 You know the rules and so do I (do I)
@@ -64,24 +65,24 @@ Never gonna say goodbye
 Never gonna tell a lie and hurt you
 """
 
-def clean_sp_char(text):
+def clean_sp_char(text: str):
     return re.sub(r"[!@#$%^?/,()!&*]", "",text)
 
-def create_freq(text):
+def create_freq(text: str):
     words = []
     words = text.lower().split()
     wfreq= [words.count(w) for w in words]
     return list(zip(words,wfreq))[:]
 
-def filter_for_freq(input):
+def filter_for_freq(input: List) -> List:
     filtered = filter(lambda freq: freq[1] > 1, input)
     return list(set(filtered))[:]
     
-def print_result(input):
+def print_result(input: List) -> None:
     for freq in input:
         print(f"word: {freq[0]} count: {freq[1]}")
     
-def return_result_list(input):
+def return_result_list(input: str):
     cleanSong = clean_sp_char(input)
     listOfWords = filter_for_freq(create_freq(cleanSong))
     listOfWords.sort(key=lambda freq: freq[1], reverse=True)

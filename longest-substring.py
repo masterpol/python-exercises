@@ -6,8 +6,6 @@ Given a string s, find the length of the longest substring without repeating cha
 Write a function called length_of_longest_substring that takes a string s as input and returns an integer representing the
 length of the longest substring without repeating characters
 """
-from functools import reduce
-
 def length_of_longest_substring(s: str) -> int:
     longest = 0
     current = ""

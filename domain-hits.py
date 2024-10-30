@@ -1,3 +1,4 @@
+from typing import Union, List
 '''
  for a set of elements in an array with the shape [10, "google.com"]
  being the first element the number of hit for the second the domain
@@ -14,16 +15,16 @@
  ]
 '''
 
-Domain = list[int, str]
+Domain = List[Union[int, str]]
 Result = dict[str, int]
 
-data: [Domain] = [
+data: List[Domain] = [
     [10, "jsfiddle.com"],
     [20, "maps.google.com"],
     [30, "photos.google.com"]
 ] 
 
-def getDicFromList(input: [Domain]) -> Result:
+def getDicFromList(input: List[Domain]) -> Result:
     return { key: value for [value, key] in input }
 
 def getSubDomainsRecursively(input: list[str], acc: Result, ref: Result) -> Result: 
@@ -51,7 +52,7 @@ def main():
     obj = getDicFromList(data)
     result: Result;
 
-    for k, v in obj.items():
+    for k in obj.items():
         subDomains = k.split('.')
         result = getSubDomainsRecursively(subDomains[1:len(subDomains)], obj, obj)
 
